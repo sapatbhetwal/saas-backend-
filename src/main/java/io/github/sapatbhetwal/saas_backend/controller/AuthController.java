@@ -6,13 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.sapatbhetwal.saas_backend.dto.RegisterRequest;
-@RestController 
+import io.github.sapatbhetwal.saas_backend.service.AuthService;
+
+@RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    private final AuthService authService; //it needs AuthService object
+
+    public AuthController(AuthService authService) { //constructor 
+        this.authService = authService;
+    }
+
     @PostMapping("/register")
-    public  String register(@RequestBody RegisterRequest request  ){
-        return "welcome"+request.getName();
+    public String register(@RequestBody RegisterRequest request) {
+
+        return authService.register(request);
+
     }
 }
-
-
