@@ -6,4 +6,6 @@ import io.github.sapatbhetwal.saas_backend.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+
+    
 }
